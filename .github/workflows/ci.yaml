@@ -1,0 +1,27 @@
+# .github/workflows/ci.yaml
+
+name: CI Validate
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Validate Kong Deck
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: decK validate
+        uses: ikeike443/decK-action@master
+        with:
+          command: "validate"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
