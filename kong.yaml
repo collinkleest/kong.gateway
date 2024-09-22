@@ -29,3 +29,4 @@ services:
       - corsproxy
       - liteproxy.webservice
     write_timeout: 60000
+aaa:
