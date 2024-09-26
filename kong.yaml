@@ -2,7 +2,7 @@ _format_version: "3.0"
 services:
   - connect_timeout: 60000
     enabled: true
-    host: localhost
+    host: liteproxy-service
     name: liteproxy-service
     port: 8082
     protocol: http
@@ -29,4 +29,3 @@ services:
       - corsproxy
       - liteproxy.webservice
     write_timeout: 60000
-aaa:
