@@ -1,0 +1,36 @@
+name: kong.gateway
+
+networks:
+ kong:
+  driver: bridge
+  name: kong-net 
+
+services:
+  kong:
+    container_name: kong.gateway
+    image: kong:3.8.0
+    restart: always
+    networks:
+      - kong
+    volumes:
+      - "${PWD}:/kong/declarative/"
+    environment:
+      - KONG_DATABASE=off
+      - KONG_DECLARATIVE_CONFIG=/kong/declarative/kong.yaml
+      - KONG_PROXY_ACCESS_LOG=/dev/stdout
+      - KONG_ADMIN_ACCESS_LOG=/dev/stdout
+      - KONG_PROXY_ERROR_LOG=/dev/stderr
+      - KONG_ADMIN_ERROR_LOG=/dev/stderr
+      - KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl
+      - KONG_ADMIN_GUI_URL=http://localhost:8002
+    ports:
+      - 8000:8000
+      - 8443:8443
+      - 8002:8002
+      - 127.0.0.1:8001:8001
+      - 127.0.0.1:8444:8444
+    healthcheck:
+      test: ["CMD", "kong", "health"]
+      interval: 120s
+      timeout: 10s
+      retries: 3
