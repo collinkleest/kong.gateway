@@ -19,8 +19,8 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             mkdir -p ~/github && cd ~/github
-            git clone https://github.com/collinkleest/liteproxy.git
-            cd ~/github/liteproxy/
+            git clone https://github.com/collinkleest/kong.gateway.git
+            cd ~/github/kong.gateway/
             git pull
   release:
     runs-on: ubuntu-latest
@@ -34,6 +34,6 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-            cd ~/github/liteproxy/
+            cd ~/github/kong.gateway/
             docker compose down
             docker compose up -d
