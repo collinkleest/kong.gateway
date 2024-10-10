@@ -7,7 +7,7 @@ networks:
 
 services:
   kong:
-    container_name: kong.gateway
+    container_name: kong-gateway
     image: kong:3.8.0
     restart: always
     networks:
