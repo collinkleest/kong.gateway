@@ -29,3 +29,38 @@ services:
       - corsproxy
       - liteproxy.webservice
     write_timeout: 60000
+  - connect_timeout: 60000
+    enabled: true
+    host: collinkleest.github.io
+    name: fpl-betlab
+    port: 443
+    protocol: https
+    read_timeout: 60000
+    retries: 5
+    routes:
+      - hosts:
+          - fpl.betlab.app
+        https_redirect_status_code: 426
+        name: fpl-betlab-route
+        path_handling: v1
+        paths:
+          - /
+        preserve_host: false
+        protocols:
+          - http
+          - https
+        regex_priority: 0
+        request_buffering: true
+        response_buffering: true
+        strip_path: false
+    tags:
+      - fpl
+      - fpl.app
+      - fpl.betlab
+    write_timeout: 60000
+    plugins:
+      - name: request-transformer
+        config:
+          http_method: GET
+          replace:
+            uri: "/fpl.app/"
