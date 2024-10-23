@@ -29,3 +29,10 @@ Tear down the docker instance
 ```bash
 docker compose down
 ```
+
+### Services Hosted in this Kong Gateway
+
+| Service | Url | 
+| ------------- | ------------- |
+| liteproxy.webservice   | https://liteproxy.collinkleest.com/proxy     |
+| fpl.app    | https://fpl.betlab.app/fpl.app/       |
