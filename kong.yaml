@@ -50,16 +50,17 @@ services:
         hosts:
           - fpl.betlab.app
         paths:
-          - /(.*)  # Matches everything that does not have /fpl.app
+          - ~/.*  # Matches everything that does not have /fpl.app
         strip_path: false
         plugins:
           - name: request-transformer
             config:
-              append:
-                uri: "/fpl.app"  # Append /fpl.app to any incoming path
+              replace:
+                uri: "/fpl.app$uri"  # Replace the URI by appending /fpl.app to the current URI
 
     tags:
       - fpl
       - fpl.app
       - fpl.betlab
     write_timeout: 60000
+
