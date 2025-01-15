@@ -19,3 +19,20 @@ services:
       - liteproxy
       - corsproxy
       - liteproxy.webservice
+
+  - name: collinkleest.com
+    host: collinkleest-website
+    port: 3000
+    protocol: http
+    routes:
+      - name: collinkleest-website-route
+        hosts:
+          - collinkleest.com
+          - www.collinkleest.com
+        protocols:
+          - http
+          - https
+        strip_path: false
+    tags:
+      - collinkleest.com
+      - collinkleest-website
