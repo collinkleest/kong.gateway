@@ -1,13 +1,12 @@
 _format_version: "3.0"
-
 services:
-    name: liteproxy-service
+  - name: liteproxy-service
     host: liteproxy-service
     port: 8082
     protocol: http
     routes:
-      name: liteproxy-cors-route
-      - hosts:
+      - name: liteproxy-cors-route
+        hosts:
           - liteproxy.collinkleest.com
         paths:
           - /proxy
