@@ -1,62 +1,22 @@
 _format_version: "3.0"
+
 services:
-  - connect_timeout: 60000
-    enabled: true
-    host: liteproxy-service
     name: liteproxy-service
+    host: liteproxy-service
     port: 8082
     protocol: http
-    read_timeout: 60000
-    retries: 5
     routes:
+      name: liteproxy-cors-route
       - hosts:
           - liteproxy.collinkleest.com
-        https_redirect_status_code: 426
-        name: liteproxy-cors-route
-        path_handling: v0
         paths:
           - /proxy
         preserve_host: false
         protocols:
           - http
           - https
-        regex_priority: 0
-        request_buffering: true
-        response_buffering: true
         strip_path: false
     tags:
       - liteproxy
       - corsproxy
       - liteproxy.webservice
-    write_timeout: 60000
-  
-  - connect_timeout: 60000
-    enabled: true
-    host: collinkleest.github.io
-    name: fpl-betlab
-    port: 443
-    protocol: https
-    read_timeout: 60000
-    retries: 5
-    routes:
-      - hosts:
-          - fpl.betlab.app
-        https_redirect_status_code: 426
-        name: fpl-betlab-route
-        path_handling: v1
-        paths:
-          - /
-        preserve_host: false
-        protocols:
-          - http
-          - https
-        regex_priority: 0
-        request_buffering: true
-        response_buffering: true
-        strip_path: false
-
-    tags:
-      - fpl
-      - fpl.app
-      - fpl.betlab
-    write_timeout: 60000
