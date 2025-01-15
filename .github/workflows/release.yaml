@@ -18,3 +18,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
+          command: |
+            export KONG_PASSWORD=${{ secrets.KONG_PASSWORD }}
+            docker compose down
+            docker compose up -d
