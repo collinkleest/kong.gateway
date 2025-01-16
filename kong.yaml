@@ -7,9 +7,9 @@ services:
     routes:
       - name: liteproxy-cors-route
         hosts:
-          - liteproxy.collinkleest.com
+          - api.liteproxy.collinkleest.com
         paths:
-          - ~/proxy
+          - /proxy
         preserve_host: false
         protocols:
           - http
