@@ -9,7 +9,7 @@ services:
         hosts:
           - liteproxy.collinkleest.com
         paths:
-          - /proxy
+          - ~/proxy
         preserve_host: false
         protocols:
           - http
