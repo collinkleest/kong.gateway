@@ -20,6 +20,25 @@ services:
       - corsproxy
       - liteproxy.webservice
 
+  - name: liteproxy-ui-service
+    host: liteproxy-ui-service
+    port: 3001
+    protocol: http
+    routes:
+      - name: liteproxy-ui-route
+        hosts:
+          - liteproxy.collinkleest.com
+        paths:
+          - ~/
+        preserve_host: false
+        protocols:
+          - http
+          - https
+        strip_path: false
+    tags:
+      - liteproxy.ui
+      - liteproxy
+
   - name: collinkleest.com
     host: collinkleest-website
     port: 3000
