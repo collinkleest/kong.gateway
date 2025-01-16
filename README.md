@@ -35,4 +35,5 @@ docker compose down
 | Service | Url | 
 | ------------- | ------------- |
 | liteproxy.webservice   | https://liteproxy.collinkleest.com/proxy     |
+| collinkleest.com | https://collinkleest.com |
 | fpl.app    | https://fpl.betlab.app/fpl.app/       |
