@@ -1,4 +1,5 @@
 _format_version: "3.0"
+
 services:
   - name: liteproxy-service
     host: liteproxy-service
@@ -19,6 +20,12 @@ services:
       - liteproxy
       - corsproxy
       - liteproxy.webservice
+    plugins:
+      - name: rate-limiting
+        config:
+          policy: local
+          minute: 15
+          second: 5
 
   - name: liteproxy-ui-service
     host: liteproxy-ui-service

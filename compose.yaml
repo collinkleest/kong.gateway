@@ -39,6 +39,7 @@ services:
 
   redis:
     image: redis:latest
+    container_name: kong-redis
     restart: always
     ports:
       - 6379:6379
