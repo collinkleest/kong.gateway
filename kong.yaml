@@ -58,5 +58,5 @@ routes:
       - name: redirect
         config:
           status_code: 301
-          location: /fpl.app
+          location: https://fpl.betlab.app/fpl.app
           keep_incoming_path: true
