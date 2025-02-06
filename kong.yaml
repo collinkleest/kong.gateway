@@ -10,14 +10,7 @@ services:
         paths:
           - /proxy
         preserve_host: false
-        protocols:
-          - http
-          - https
         strip_path: false
-    tags:
-      - liteproxy
-      - corsproxy
-      - liteproxy.webservice
     plugins:
       - name: rate-limiting
         config:
@@ -34,13 +27,7 @@ services:
         paths:
           - ~/
         preserve_host: false
-        protocols:
-          - http
-          - https
         strip_path: false
-    tags:
-      - liteproxy.ui
-      - liteproxy
 
   - name: collinkleest.com
     url: http://collinkleest-website:3000
@@ -49,10 +36,27 @@ services:
         hosts:
           - collinkleest.com
           - www.collinkleest.com
-        protocols:
-          - http
-          - https
         strip_path: false
-    tags:
-      - collinkleest.com
-      - collinkleest-website
+
+  - name: fpl.app
+    url: https://collinkleest.github.io
+    routes:
+      - name: fpl-app-route
+        hosts:
+          - fpl.betlab.app
+        paths:
+          - ~/fpl.app
+        strip_path: false
+
+routes:
+  - name: fpl.app-redirect
+    hosts:
+      - fpl.betlab.app
+    paths:
+      - ~/
+    plugins:
+      - name: redirect
+        config:
+          status_code: 301
+          location: /fpl.app
+          keep_incoming_path: true
