@@ -2,9 +2,7 @@ _format_version: "3.0"
 
 services:
   - name: liteproxy-service
-    host: liteproxy-service
-    port: 8082
-    protocol: http
+    host: http://liteproxy-service:8082
     routes:
       - name: liteproxy-cors-route
         hosts:
@@ -28,9 +26,7 @@ services:
           second: 5
 
   - name: liteproxy-ui-service
-    host: liteproxy-ui-service
-    port: 3001
-    protocol: http
+    host: http://liteproxy-ui-service:3001
     routes:
       - name: liteproxy-ui-route
         hosts:
@@ -47,9 +43,7 @@ services:
       - liteproxy
 
   - name: collinkleest.com
-    host: collinkleest-website
-    port: 3000
-    protocol: http
+    host: http://collinkleest-website:300
     routes:
       - name: collinkleest-website-route
         hosts:
