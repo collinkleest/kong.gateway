@@ -59,4 +59,3 @@ routes:
         config:
           status_code: 301
           location: https://fpl.betlab.app/fpl.app
-          keep_incoming_path: true
