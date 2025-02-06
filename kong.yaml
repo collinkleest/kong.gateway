@@ -24,7 +24,7 @@ services:
       - name: rate-limiting
         config:
           policy: local
-          minute: 15
+          minute: 50
           second: 5
 
   - name: liteproxy-ui-service
