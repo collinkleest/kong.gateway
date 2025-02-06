@@ -43,7 +43,7 @@ services:
       - liteproxy
 
   - name: collinkleest.com
-    url: http://collinkleest-website:300
+    url: http://collinkleest-website:3000
     routes:
       - name: collinkleest-website-route
         hosts:
