@@ -29,7 +29,7 @@ services:
   kong-migrations:
     image: kong:3.9.0
     command: >
-      sh -c "kong migrations bootstrap && kong config db_import /kong/declarative/kong.yaml"
+      sh -c "kong migrations up --force && kong config db_import /kong/declarative/kong.yaml"
     networks:
       - kong
     volumes:
