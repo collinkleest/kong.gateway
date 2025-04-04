@@ -30,7 +30,7 @@ services:
         strip_path: false
 
   - name: collinkleest.com
-    url: http://collinkleest-website:3000
+    url: http://collinkleest-website:80
     routes:
       - name: collinkleest-website-route
         hosts:
