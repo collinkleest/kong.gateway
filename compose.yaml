@@ -29,6 +29,7 @@ services:
   kong-migrations:
     image: kong:3.9.0
     command: kong migrations bootstrap && kong config db_import /kong/declarative/kong.yaml
+    restart: "no"
     networks:
       - kong
     volumes:
@@ -74,8 +75,8 @@ services:
       - 8001:8001
       - 8444:8444
     depends_on:
-      kong-database:
-        condition: service_healthy
+      kong-migrations:
+        condition: service_completed_successfully
     healthcheck:
       test: ["CMD", "kong", "health"]
       interval: 120s
