@@ -20,5 +20,7 @@ jobs:
           port: ${{ secrets.PORT }}
           command: |
             export KONG_PASSWORD=${{ secrets.KONG_PASSWORD }}
+            export KONG_DB_USER=${{ secrets.KONG_DB_USER }}
+            export KONG_DB_PASSWORD=${{ secrets.KONG_DB_PASSWORD }}
             docker compose down -v
             docker compose up -d

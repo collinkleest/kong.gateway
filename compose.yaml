@@ -14,7 +14,7 @@ services:
       - kong
     environment:
       - POSTGRES_USER=kong
-      - POSTGRES_PASSWORD=kongpass
+      - KONG_PG_PASSWORD=${KONG_DB_PASSWORD}
       - POSTGRES_DB=kong
     volumes:
       - kong-data:/var/lib/postgresql/data
@@ -37,8 +37,8 @@ services:
     environment:
       - KONG_DATABASE=postgres
       - KONG_PG_HOST=kong-database
-      - KONG_PG_USER=kong
-      - KONG_PG_PASSWORD=kongpass
+      - KONG_PG_USER=${KONG_DB_USER}
+      - KONG_PG_PASSWORD=${KONG_DB_PASSWORD}
       - KONG_PG_DATABASE=kong
       - KONG_PG_TIMEOUT=60000 # Sets timeout to 60 seconds instead of default
       - KONG_PG_CONNECT_TIMEOUT=60000
@@ -57,8 +57,8 @@ services:
     environment:
       - KONG_DATABASE=postgres
       - KONG_PG_HOST=kong-database
-      - KONG_PG_USER=kong
-      - KONG_PG_PASSWORD=kongpass
+      - KONG_PG_USER=${KONG_DB_USER}
+      - KONG_PG_PASSWORD=${KONG_DB_PASSWORD}
       - KONG_PG_DATABASE=kong
       - KONG_PROXY_ACCESS_LOG=/dev/stdout
       - KONG_ADMIN_ACCESS_LOG=/dev/stdout
