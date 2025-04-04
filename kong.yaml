@@ -30,7 +30,7 @@ services:
         strip_path: false
 
   - name: collinkleest.com
-    url: http://collinkleest-website:80
+    url: http://collinkleest-website-upstream
     routes:
       - name: collinkleest-website-route
         hosts:
@@ -59,3 +59,11 @@ routes:
         config:
           status_code: 301
           location: https://fpl.betlab.app/fpl.app
+
+upstreams:
+  - name: collinkleest-website-upstream
+    targets:
+      - target: collinkleest-website-blue:80
+        weight: 100 # 100% traffic to blue initially
+      - target: collinkleest-website-green:80
+        weight: 0 # 0% traffic to green initially
