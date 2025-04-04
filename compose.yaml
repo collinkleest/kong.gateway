@@ -21,15 +21,14 @@ services:
     ports:
       - "5432:5432"
     healthcheck:
-      test: ["CMD", "pg_isready", "-U", "kong"]
+      test: ["CMD", "pg_isready", "-U", "kong", "-d", "kong"]
       interval: 10s
       timeout: 5s
       retries: 5
 
   kong-migrations:
     image: kong:3.9.0
-    command: >
-      sh -c "kong migrations up --force && kong config db_import /kong/declarative/kong.yaml"
+    command: kong migrations bootstrap && kong config db_import /kong/declarative/kong.yaml
     networks:
       - kong
     volumes:
@@ -41,7 +40,8 @@ services:
       - KONG_PG_PASSWORD=kongpass
       - KONG_PG_DATABASE=kong
     depends_on:
-      - kong-database
+      kong-database:
+        condition: service_healthy
 
   kong:
     container_name: kong-gateway
