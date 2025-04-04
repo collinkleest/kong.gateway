@@ -13,7 +13,7 @@ services:
     networks:
       - kong
     environment:
-      - POSTGRES_USER=kong
+      - POSTGRES_USER=${KONG_DB_USER}
       - POSTGRES_PASSWORD=${KONG_DB_PASSWORD}
       - POSTGRES_DB=kong
     volumes:
