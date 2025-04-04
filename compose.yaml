@@ -40,6 +40,8 @@ services:
       - KONG_PG_USER=kong
       - KONG_PG_PASSWORD=kongpass
       - KONG_PG_DATABASE=kong
+      - KONG_PG_TIMEOUT=60000 # Sets timeout to 60 seconds instead of default
+      - KONG_PG_CONNECT_TIMEOUT=60000
     depends_on:
       kong-database:
         condition: service_healthy
@@ -64,6 +66,8 @@ services:
       - KONG_ADMIN_ERROR_LOG=/dev/stderr
       - KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl
       - KONG_PASSWORD=${KONG_PASSWORD}
+      - KONG_PG_TIMEOUT=60000 # Sets timeout to 60 seconds instead of default
+      - KONG_PG_CONNECT_TIMEOUT=60000
     ports:
       - 8000:8000
       - 8443:8443
