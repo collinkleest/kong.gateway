@@ -19,8 +19,8 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           command: |
+            echo "KONG_PASSWORD=${{ secrets.KONG_PASSWORD }}" > .env
+            echo "KONG_DB_USER=${{ secrets.KONG_DB_USER }}" >> .env
+            echo "KONG_DB_PASSWORD=${{ secrets.KONG_DB_PASSWORD }}" >> .env
             docker compose down -v
-            KONG_PASSWORD=${{ secrets.KONG_PASSWORD }}
-            KONG_DB_USER=${{ secrets.KONG_DB_USER }}
-            KONG_DB_PASSWORD=${{ secrets.KONG_DB_PASSWORD }}
             docker compose up -d
