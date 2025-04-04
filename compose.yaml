@@ -33,7 +33,7 @@ services:
     networks:
       - kong
     volumes:
-      - "${PWD}:/kong/declarative/" # Mount the directory containing kong.yaml
+      - "${PWD}:/kong/declarative/"
     environment:
       - KONG_DATABASE=postgres
       - KONG_PG_HOST=kong-database
@@ -47,8 +47,6 @@ services:
     container_name: kong-gateway
     image: kong:3.9.0
     restart: always
-    depends_on:
-      - kong-database
     networks:
       - kong
     volumes:
@@ -59,7 +57,6 @@ services:
       - KONG_PG_USER=kong
       - KONG_PG_PASSWORD=kongpass
       - KONG_PG_DATABASE=kong
-      - KONG_DECLARATIVE_CONFIG=/kong/declarative/kong.yaml
       - KONG_PROXY_ACCESS_LOG=/dev/stdout
       - KONG_ADMIN_ACCESS_LOG=/dev/stdout
       - KONG_PROXY_ERROR_LOG=/dev/stderr
@@ -72,6 +69,8 @@ services:
       - 8002:8002
       - 8001:8001
       - 8444:8444
+    depends_on:
+      - kong-database
     healthcheck:
       test: ["CMD", "kong", "health"]
       interval: 120s
